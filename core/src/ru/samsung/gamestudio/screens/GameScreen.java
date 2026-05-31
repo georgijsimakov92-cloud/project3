@@ -30,6 +30,7 @@ public class GameScreen extends ScreenAdapter {
     ImageView topBlackoutView;
     LiveView liveView;
     TextView scoreTextView;
+    TextView levelTextView;
     ButtonView pauseButton;
 
     ImageView fullBlackoutView;
@@ -61,6 +62,12 @@ public class GameScreen extends ScreenAdapter {
         topBlackoutView = new ImageView(0, 1180, GameResources.BLACKOUT_TOP_IMG_PATH);
         liveView = new LiveView(305, 1215);
         scoreTextView = new TextView(myGdxGame.commonWhiteFont, 50, 1215);
+        levelTextView = new TextView(
+        myGdxGame.commonWhiteFont,
+                470,
+                1215,
+                "Level: 1"
+        );
         pauseButton = new ButtonView(
                 605, 1200,
                 46, 54,
@@ -106,15 +113,22 @@ public class GameScreen extends ScreenAdapter {
 
         handleInput();
 
-        if (gameSession.state == GameState.PLAYING) {
-            if (gameSession.shouldSpawnTrash()) {
-                TrashObject trashObject = new TrashObject(
-                        GameSettings.TRASH_WIDTH, GameSettings.TRASH_HEIGHT,
-                        GameResources.TRASH_IMG_PATH,
-                        myGdxGame.world
-                );
-                trashArray.add(trashObject);
-            }
+        if (gameSession.shouldSpawnTrash()) {
+
+    float trashVelocity =
+            GameSettings.TRASH_VELOCITY
+            + gameSession.getDifficultyLevel() * 2;
+
+    TrashObject trashObject = new TrashObject(
+            GameSettings.TRASH_WIDTH,
+            GameSettings.TRASH_HEIGHT,
+            GameResources.TRASH_IMG_PATH,
+            myGdxGame.world,
+            trashVelocity
+    );
+
+    trashArray.add(trashObject);
+}
 
             if (shipObject.needToShoot()) {
                 BulletObject laserBullet = new BulletObject(
@@ -137,6 +151,9 @@ public class GameScreen extends ScreenAdapter {
             backgroundView.move();
             gameSession.updateScore();
             scoreTextView.setText("Score: " + gameSession.getScore());
+            levelTextView.setText(
+            "Level: " + gameSession.getDifficultyLevel()
+            );
             liveView.setLeftLives(shipObject.getLiveLeft());
 
             myGdxGame.stepWorld();
@@ -190,6 +207,7 @@ public class GameScreen extends ScreenAdapter {
         for (BulletObject bullet : bulletArray) bullet.draw(myGdxGame.batch);
         topBlackoutView.draw(myGdxGame.batch);
         scoreTextView.draw(myGdxGame.batch);
+        levelTextView.draw(myGdxGame.batch);
         liveView.draw(myGdxGame.batch);
         pauseButton.draw(myGdxGame.batch);
 
