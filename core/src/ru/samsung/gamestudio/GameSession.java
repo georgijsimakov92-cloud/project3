@@ -11,6 +11,7 @@ public class GameSession {
     long nextTrashSpawnTime;
     long sessionStartTime;
     long pauseStartTime;
+
     private int score;
     int destructedTrashNumber;
 
@@ -21,9 +22,12 @@ public class GameSession {
         state = GameState.PLAYING;
         score = 0;
         destructedTrashNumber = 0;
+
         sessionStartTime = TimeUtils.millis();
-        nextTrashSpawnTime = sessionStartTime + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
-            * getTrashPeriodCoolDown());
+
+        nextTrashSpawnTime = sessionStartTime +
+                (long)(GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
+                        * getTrashPeriodCoolDown());
     }
 
     public void pauseGame() {
@@ -38,41 +42,66 @@ public class GameSession {
 
     public void endGame() {
         updateScore();
+
         state = GameState.ENDED;
+
         ArrayList<Integer> recordsTable = MemoryManager.loadRecordsTable();
+
         if (recordsTable == null) {
             recordsTable = new ArrayList<>();
         }
+
         int foundIdx = 0;
+
         for (; foundIdx < recordsTable.size(); foundIdx++) {
-            if (recordsTable.get(foundIdx) < getScore()) break;
+            if (recordsTable.get(foundIdx) < getScore()) {
+                break;
+            }
         }
+
         recordsTable.add(foundIdx, getScore());
+
         MemoryManager.saveTableOfRecords(recordsTable);
     }
 
     public void destructionRegistration() {
-        destructedTrashNumber += 1;
+        destructedTrashNumber++;
     }
 
     public void updateScore() {
-        score = (int) (TimeUtils.millis() - sessionStartTime) / 100 + destructedTrashNumber * 100;
+        score = (int)(TimeUtils.millis() - sessionStartTime) / 100
+                + destructedTrashNumber * 100;
     }
 
     public int getScore() {
         return score;
     }
 
+    public int getDifficultyLevel() {
+        long seconds = (TimeUtils.millis() - sessionStartTime) / 1000;
+        return 1 + (int)(seconds / 30);
+    }
+
     public boolean shouldSpawnTrash() {
+
         if (nextTrashSpawnTime <= TimeUtils.millis()) {
-            nextTrashSpawnTime = TimeUtils.millis() + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
-                * getTrashPeriodCoolDown());
+
+            nextTrashSpawnTime = TimeUtils.millis()
+                    + (long)(GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
+                    * getTrashPeriodCoolDown());
+
             return true;
         }
+
         return false;
     }
 
     private float getTrashPeriodCoolDown() {
-        return (float) Math.exp(-0.001 * (TimeUtils.millis() - sessionStartTime + 1) / 1000);
+
+        int level = getDifficultyLevel();
+
+        float multiplier = 1f - Math.min(level * 0.05f, 0.7f);
+
+        return Math.max(multiplier, 0.2f);
     }
 }
