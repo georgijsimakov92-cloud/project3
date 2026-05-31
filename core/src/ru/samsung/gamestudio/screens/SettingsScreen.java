@@ -1,17 +1,17 @@
-package ru.samsung.gamestudio.screens;
+package simakov.licey97.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
-import ru.samsung.gamestudio.GameResources;
-import ru.samsung.gamestudio.managers.MemoryManager;
-import ru.samsung.gamestudio.MyGdxGame;
-import ru.samsung.gamestudio.components.ButtonView;
-import ru.samsung.gamestudio.components.ImageView;
-import ru.samsung.gamestudio.components.MovingBackgroundView;
-import ru.samsung.gamestudio.components.TextView;
+import simakov.licey97.GameResources;
+import simakov.licey97.managers.MemoryManager;
+import simakov.licey97.MyGdxGame;
+import simakov.licey97.components.ButtonView;
+import simakov.licey97.components.ImageView;
+import simakov.licey97.components.MovingBackgroundView;
+import simakov.licey97.components.TextView;
 
 import java.util.ArrayList;
 
