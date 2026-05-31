@@ -30,4 +30,7 @@ public class GameSettings {
     public static final int BULLET_WIDTH = 15;
     public static final int BULLET_HEIGHT = 45;
 
+    public static final int BONUS_WIDTH = 80;
+    public static final int BONUS_HEIGHT = 80;
+
 }
