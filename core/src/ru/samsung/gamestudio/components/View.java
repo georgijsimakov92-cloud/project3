@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio.components;
+package simakov.licey97.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
