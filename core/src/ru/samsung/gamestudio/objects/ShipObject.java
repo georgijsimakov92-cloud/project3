@@ -1,11 +1,11 @@
-package ru.samsung.gamestudio.objects;
+package simakov.licey97.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
-import ru.samsung.gamestudio.GameSettings;
+import simakov.licey97.GameSettings;
 
 public class ShipObject extends GameObject {
 
@@ -31,9 +31,9 @@ public class ShipObject extends GameObject {
 
     public void move(Vector3 vector3) {
         body.applyForceToCenter(new Vector2(
-                        (vector3.x - getX()) * GameSettings.SHIP_FORCE_RATIO,
-                        (vector3.y - getY()) * GameSettings.SHIP_FORCE_RATIO),
-                true
+                (vector3.x - getX()) * GameSettings.SHIP_FORCE_RATIO,
+                (vector3.y - getY()) * GameSettings.SHIP_FORCE_RATIO),
+            true
         );
     }
 
