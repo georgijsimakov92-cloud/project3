@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio;
+package simakov.licey97;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -10,12 +10,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.World;
-import ru.samsung.gamestudio.managers.AudioManager;
-import ru.samsung.gamestudio.screens.GameScreen;
-import ru.samsung.gamestudio.screens.MenuScreen;
-import ru.samsung.gamestudio.screens.SettingsScreen;
+import simakov.licey97.managers.AudioManager;
+import simakov.licey97.screens.GameScreen;
+import simakov.licey97.screens.MenuScreen;
+import simakov.licey97.screens.SettingsScreen;
 
-import static ru.samsung.gamestudio.GameSettings.*;
+import static simakov.licey97.GameSettings.*;
 
 public class MyGdxGame extends Game {
 
