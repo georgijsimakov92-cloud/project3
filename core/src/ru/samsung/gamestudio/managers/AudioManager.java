@@ -1,9 +1,9 @@
-package ru.samsung.gamestudio.managers;
+package simakov.licey97.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import ru.samsung.gamestudio.GameResources;
+import simakov.licey97.GameResources;
 
 public class AudioManager {
 
