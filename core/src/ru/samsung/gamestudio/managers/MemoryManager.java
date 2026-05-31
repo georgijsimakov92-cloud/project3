@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio.managers;
+package simakov.licey97.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
