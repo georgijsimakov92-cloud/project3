@@ -1,9 +1,9 @@
-package ru.samsung.gamestudio;
+package simakov.licey97;
+
 import com.badlogic.gdx.utils.TimeUtils;
-import ru.samsung.gamestudio.managers.MemoryManager;
+import simakov.licey97.managers.MemoryManager;
 
 import java.util.ArrayList;
-
 
 public class GameSession {
 
@@ -23,7 +23,7 @@ public class GameSession {
         destructedTrashNumber = 0;
         sessionStartTime = TimeUtils.millis();
         nextTrashSpawnTime = sessionStartTime + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
-                * getTrashPeriodCoolDown());
+            * getTrashPeriodCoolDown());
     }
 
     public void pauseGame() {
@@ -66,7 +66,7 @@ public class GameSession {
     public boolean shouldSpawnTrash() {
         if (nextTrashSpawnTime <= TimeUtils.millis()) {
             nextTrashSpawnTime = TimeUtils.millis() + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
-                    * getTrashPeriodCoolDown());
+                * getTrashPeriodCoolDown());
             return true;
         }
         return false;
