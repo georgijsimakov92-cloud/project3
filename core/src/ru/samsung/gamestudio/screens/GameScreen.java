@@ -1,17 +1,17 @@
-package ru.samsung.gamestudio.screens;
+package simakov.licey97.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
-import ru.samsung.gamestudio.*;
-import ru.samsung.gamestudio.components.*;
-import ru.samsung.gamestudio.managers.ContactManager;
-import ru.samsung.gamestudio.managers.MemoryManager;
-import ru.samsung.gamestudio.objects.BulletObject;
-import ru.samsung.gamestudio.objects.ShipObject;
-import ru.samsung.gamestudio.objects.TrashObject;
+import simakov.licey97.*;
+import simakov.licey97.components.*;
+import simakov.licey97.managers.ContactManager;
+import simakov.licey97.managers.MemoryManager;
+import simakov.licey97.objects.BulletObject;
+import simakov.licey97.objects.ShipObject;
+import simakov.licey97.objects.TrashObject;
 
 import java.util.ArrayList;
 
@@ -26,20 +26,17 @@ public class GameScreen extends ScreenAdapter {
 
     ContactManager contactManager;
 
-    // PLAY state UI
     MovingBackgroundView backgroundView;
     ImageView topBlackoutView;
     LiveView liveView;
     TextView scoreTextView;
     ButtonView pauseButton;
 
-    // PAUSED state UI
     ImageView fullBlackoutView;
     TextView pauseTextView;
     ButtonView homeButton;
     ButtonView continueButton;
 
-    // ENDED state UI
     TextView recordsTextView;
     RecordsListView recordsListView;
     ButtonView homeButton2;
