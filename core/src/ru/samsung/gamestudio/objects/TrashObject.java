@@ -1,8 +1,8 @@
-package ru.samsung.gamestudio.objects;
+package simakov.licey97.objects;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import ru.samsung.gamestudio.GameSettings;
+import simakov.licey97.GameSettings;
 
 import java.util.Random;
 
@@ -14,12 +14,12 @@ public class TrashObject extends GameObject {
 
     public TrashObject(int width, int height, String texturePath, World world) {
         super(
-                texturePath,
-                width / 2 + paddingHorizontal + (new Random()).nextInt((GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - width)),
-                GameSettings.SCREEN_HEIGHT + height / 2,
-                width, height,
-                GameSettings.TRASH_BIT,
-                world
+            texturePath,
+            width / 2 + paddingHorizontal + (new Random()).nextInt((GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - width)),
+            GameSettings.SCREEN_HEIGHT + height / 2,
+            width, height,
+            GameSettings.TRASH_BIT,
+            world
         );
 
         body.setLinearVelocity(new Vector2(0, -GameSettings.TRASH_VELOCITY));
