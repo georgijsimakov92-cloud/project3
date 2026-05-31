@@ -12,17 +12,26 @@ public class TrashObject extends GameObject {
 
     private int livesLeft;
 
-    public TrashObject(int width, int height, String texturePath, World world) {
+    public TrashObject(
+            int width,
+            int height,
+            String texturePath,
+            World world,
+            float velocity
+    ) {
+
         super(
-            texturePath,
-            width / 2 + paddingHorizontal + (new Random()).nextInt((GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - width)),
-            GameSettings.SCREEN_HEIGHT + height / 2,
-            width, height,
-            GameSettings.TRASH_BIT,
-            world
+                texturePath,
+                width / 2 + paddingHorizontal + (new Random()).nextInt((GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - width)),
+                GameSettings.SCREEN_HEIGHT + height / 2,
+                width,
+                height,
+                GameSettings.TRASH_BIT,
+                world
         );
 
-        body.setLinearVelocity(new Vector2(0, -GameSettings.TRASH_VELOCITY));
+        body.setLinearVelocity(new Vector2(0, -velocity));
+
         livesLeft = 1;
     }
 
@@ -36,6 +45,6 @@ public class TrashObject extends GameObject {
 
     @Override
     public void hit() {
-        livesLeft -= 1;
+        livesLeft--;
     }
 }
